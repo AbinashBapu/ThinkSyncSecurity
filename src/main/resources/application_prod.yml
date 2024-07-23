@@ -1,22 +1,29 @@
 spring:
   application:
     name: ${SPRING_APP_NAME:thinksyncsecurity}
-  config:
-    import: optional:classpath:application_${spring.profiles.active}.yml
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE}
+  profile:
+    activate:
+      on-profile: prod
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/thinksyncsecurity
     username: postgres
     password: root
-    show-sql: true
+  jpa:
     properties:
-        format_sql: true
+      hibernate:
+        default_schema: prod
+  liquibase:
+    default-schema: prod
 logging:
   pattern:
     console: ${LOG_PATTERN_CONSOLE:%green(%d{dd-MMM-yyyy HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n}
   level:
     org:
       springframework:
-        security: TRACE
+        security: ERROR
+    com:
+      thinksync:
+        security:
+          controller: ERROR
+

@@ -11,4 +11,6 @@ public class UserInfo {
   private String lastName;
   private Integer age;
   private Float salary;
+  private String hash;
+  private String role;
 }
