@@ -26,6 +26,6 @@ ThinkSyncSecurity is a spring security functionality explored project `https://d
 - Removed hardcoded users from config and implemented own userService
 - Leveraged Spring Security UserDetailsService
 
-### Branch 3:  [feature/v0.0.4-custom-auth-provider-with-profiling](https://github.com/AbinashBapu/ThinkSyncSecurity/tree/feature/v0.0.4-custom-auth-provider-with-profiling)
+### Branch 4:  [feature/v0.0.4-custom-auth-provider-with-profiling](https://github.com/AbinashBapu/ThinkSyncSecurity/tree/feature/v0.0.4-custom-auth-provider-with-profiling)
 - Implemented custom authentication provider
 - Added profiling to application
