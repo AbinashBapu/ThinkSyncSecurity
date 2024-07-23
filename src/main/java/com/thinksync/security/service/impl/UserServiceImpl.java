@@ -66,7 +66,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     UserProfile userProfile = userProfileRepository.findByUser(userEntity);
 
     return UserInfo.builder().firstName(userProfile.getFirstname()).lastName(userProfile.getLastname())
-        .emailId(userEntity.getEmailId()).salary(userProfile.getSalary()).age(userProfile.getAge()).build();
+        .emailId(userEntity.getEmailId()).salary(userProfile.getSalary()).age(userProfile.getAge())
+        .hash(userProfile.getUser().getHash()).role(userProfile.getUser().getAuthorities()).build();
   }
 
   /**
