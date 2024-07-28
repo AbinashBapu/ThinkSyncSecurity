@@ -39,4 +39,5 @@ ThinkSyncSecurity is a spring security functionality explored project `https://d
 - Implemented session time out (achieved by using )
 - Concurrent session management ```sessionManagement(sm->sm.maximumSessions(2).maxSessionsPreventsLogin(true)) ```
 - Enable Cross Origin Request (CORS)
+
   
