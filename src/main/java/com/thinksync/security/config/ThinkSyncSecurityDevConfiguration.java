@@ -19,8 +19,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
 @Configuration
-@Profile("prod")
-public class ThinkSyncSecurityConfiguration {
+@Profile("!prod")
+public class ThinkSyncSecurityDevConfiguration {
 
   /**
    * We are allowing all URI which started with public. We have disabled here csrf otherwise it will
@@ -88,15 +88,17 @@ public class ThinkSyncSecurityConfiguration {
             return config;
           }
         }))
-        .sessionManagement(sm->sm.maximumSessions(1).maxSessionsPreventsLogin(true))
-        .requiresChannel(rcConfig->rcConfig.anyRequest().requiresSecure())
-        .csrf(csrfConfig -> csrfConfig.ignoringRequestMatchers("/public/**"))
+        .sessionManagement(sm->sm.maximumSessions(2).maxSessionsPreventsLogin(true))         //maximum session handling
+        .requiresChannel(rcConfig->rcConfig.anyRequest().requiresInsecure())                 // secure or insequre url
+        .csrf(csrfConfig -> csrfConfig.ignoringRequestMatchers("/public/**"))      // csrf disable for public urls
         .authorizeHttpRequests((request -> request
-            .requestMatchers("/public/**").permitAll()
-            .anyRequest().authenticated()));
-    httpSecurity.formLogin(Customizer.withDefaults());
-    httpSecurity.httpBasic(basicConfig->basicConfig.authenticationEntryPoint(new BasicAuthEntryPoint()));
+            .requestMatchers("/public/**").permitAll()                             // Permit all public url
+            .anyRequest().authenticated()));                                                // authenticate other url
+    httpSecurity.formLogin(Customizer.withDefaults());                                      // form login showing with default page
+    httpSecurity.httpBasic(basicConfig->basicConfig.authenticationEntryPoint(new BasicAuthEntryPoint()));    // Use to handle exception
     httpSecurity.exceptionHandling(excptionHandler->excptionHandler.accessDeniedHandler(new AccessDeniedExceptionHandler()));  // global level exception handling
+
+
     return httpSecurity.build();
   }
 

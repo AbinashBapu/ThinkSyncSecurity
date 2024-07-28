@@ -17,6 +17,10 @@ spring:
         default_schema: public
   liquibase:
     default-schema: public
+server:
+  servlet:
+    session:
+      timeout:${SESSION_TIMEOUT:120}  # it is 2min if you want to mention in minute then modify 120 to 2m
 logging:
   pattern:
     console: ${LOG_PATTERN_CONSOLE:%green(%d{dd-MMM-yyyy HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n}
