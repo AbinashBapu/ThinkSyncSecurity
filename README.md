@@ -34,9 +34,9 @@ ThinkSyncSecurity is a spring security functionality explored project `https://d
 - Added 2 profile config to maintain secure/insecure protocols i.e http or https
 - Exception handling 
   - To Check how spring security manages exception then visit ```ExceptionTranslationFilter``` 123 line number doFilter method
-  - Implemented custom Basic Auth 
-  - Handle exception globally using ```httpSecurity.exceptionHandling(excptionHandler->excptionHandler.accessDeniedHandler(new AccessDeniedExceptionHandler()));``` in config 
-  - Implemented session time out (achieved by using )
-  - Concurrent session management ```sessionManagement(sm->sm.maximumSessions(2).maxSessionsPreventsLogin(true)) ```
-  - Enable Cross Origin Request (CORS)
+  - Handle exception globally using ```httpSecurity.exceptionHandling(excptionHandler->excptionHandler.accessDeniedHandler(new AccessDeniedExceptionHandler()));``` in config
+- Implemented custom Basic Auth 
+- Implemented session time out (achieved by using )
+- Concurrent session management ```sessionManagement(sm->sm.maximumSessions(2).maxSessionsPreventsLogin(true)) ```
+- Enable Cross Origin Request (CORS)
   
